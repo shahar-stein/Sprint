@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@drawable/background2">
+        >
+        <LinearLayout
+            android:id="@+id/trainerplan"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="0dp"
+            >
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/exerciseheader"
+                    android:fontFamily="@font/aclonica"
+                    android:textColor="@color/cardview_light_background"
+                    android:textSize="36sp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center_horizontal"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/exercisename"
+                    android:textColor="@android:color/background_dark"
+                    android:fontFamily="@font/aclonica"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    />
+
+                <EditText
+                    android:id="@+id/txtname"
+                    android:textColor="@android:color/background_dark"
+                    android:layout_width="189dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/aclonica"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="15dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/exercisedate"
+                    android:textColor="@android:color/background_dark"
+                    android:fontFamily="@font/aclonica"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    />
+
+                <DatePicker
+                    android:id="@+id/txtdate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:fontFamily="@font/aclonica"
+                    android:textStyle="bold"
+                    android:textSize="40dp"
+                    android:textColor="@android:color/background_dark"
+                    android:datePickerMode="spinner"
+                    android:calendarViewShown="false"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="15dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/starttime"
+                    android:fontFamily="@font/aclonica"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    />
+
+                <TimePicker
+                    android:id="@+id/txttime"
+                    android:textColor="@android:color/background_dark"
+                    android:layout_width="189dp"
+                    android:layout_height="80dp"
+                    android:fontFamily="@font/aclonica"
+                    android:textStyle="bold"
+                    android:textSize="40dp"
+                    android:timePickerMode="spinner"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/trainer_name"
+                    android:textColor="@android:color/background_dark"
+                    android:fontFamily="@font/aclonica"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    />
+
+                <TextView
+                    android:id="@+id/txttrainer"
+                    android:layout_width="189dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/aclonica"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:textColor="@android:color/background_dark"
+                    android:text="text"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/exerciseadress"
+                    android:textColor="@android:color/background_dark"
+                    android:fontFamily="@font/aclonica"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    />
+
+                <EditText
+                    android:id="@+id/txtadress"
+                    android:layout_width="189dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/aclonica"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+
+                android:layout_marginTop="15dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/exercisedescription"
+                    android:textColor="@android:color/background_dark"
+                    android:fontFamily="@font/aclonica"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    />
+
+                <EditText
+                    android:id="@+id/txtdescription"
+                    android:layout_width="189dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/aclonica"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp">
+                <Button
+                    android:id="@+id/btnsubmit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/background_dark"
+                    android:text="@string/btn_send"
+                    />
+                <Button
+                    android:id="@+id/btnexit"
+                    android:textColor="@android:color/background_dark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btnexit"
+                    />
+
+            </LinearLayout>
+
+            </LinearLayout>
+
+            </ScrollView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/traineeplan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="0dp"
+            >
+
+            <ListView
+                android:id="@+id/explan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </ListView>
+
+        </LinearLayout>
+
+</FrameLayout>

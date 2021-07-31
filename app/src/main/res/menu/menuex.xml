@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<!--item 0-->
+    <item
+        android:id="@+id/home"
+        android:title="@string/home"
+        android:titleCondensed="Home"
+        android:icon="@drawable/home"
+        android:onClick="onOptionsItemSelected"
+        app:showAsAction="never"
+        />
+
+    <!--item 1-->
+    <item
+        android:id="@+id/aboutus"
+        android:title="@string/aboutus"
+        android:titleCondensed="About Us"
+        android:icon="@android:drawable/btn_star"
+        android:onClick="onOptionsItemSelected"
+        app:showAsAction="never"
+        />
+
+    <!--item 2-->
+    <item
+        android:id="@+id/login"
+        android:title="@string/login_header"
+        android:titleCondensed="Log In"
+        android:onClick="onOptionsItemSelected"
+        app:showAsAction="never"
+        />
+
+    <!--item 3-->
+    <item
+        android:id="@+id/register"
+        android:title="@string/register_header"
+        android:titleCondensed="Register"
+        android:onClick="onOptionsItemSelected"
+        app:showAsAction="never"
+        />
+
+    <!--item 4-->
+    <item
+        android:id="@+id/update"
+        android:title="@string/update"
+        android:titleCondensed="User Update"
+        android:onClick="onOptionsItemSelected"
+        app:showAsAction="never"
+        />
+
+    <!--item 5-->
+    <item
+        android:id="@+id/rate"
+        android:title="@string/rating_header"
+        android:titleCondensed="Rating"
+        android:onClick="onOptionsItemSelected"
+        app:showAsAction="never"
+        />
+
+    <!--item 6-->
+    <item
+        android:id="@+id/data"
+        android:title="@string/groupdata"
+        android:titleCondensed="Group Data"
+        android:onClick="onOptionsItemSelected"
+        app:showAsAction="never"
+        />
+
+    <!--item 7-->
+    <item
+        android:id="@+id/race"
+        android:title="@string/showraces"
+        android:titleCondensed="Show races"
+        android:onClick="onOptionsItemSelected"
+        app:showAsAction="never"
+        />
+
+    <!--item 8-->
+    <item
+        android:id="@+id/openrace"
+        android:title="@string/openrace"
+        android:titleCondensed="Open Race"
+        android:onClick="onOptionsItemSelected"
+        app:showAsAction="never"
+        />
+
+    <!--item 9-->
+    <item
+        android:id="@+id/exercise"
+        android:title="@string/exercises"
+        android:titleCondensed="Exercises"
+        android:onClick="onOptionsItemSelected"
+        app:showAsAction="never"
+        />
+
+    <!--item 10-->
+    <item
+        android:id="@+id/exercise_v"
+        android:title="@string/Exercisesattendancy"
+        android:titleCondensed="Exercises attendancy"
+        android:onClick="onOptionsItemSelected"
+        app:showAsAction="never"
+        />
+
+    <!--item 11-->
+    <item
+        android:id="@+id/music"
+        android:title="@string/music"
+        android:titleCondensed="Music"
+        android:onClick="onOptionsItemSelected"
+        app:showAsAction="never"
+        />
+
+    <!--item 12-->
+    <item
+        android:id="@+id/utility"
+        android:title="@string/utility"
+        android:titleCondensed="Utility"
+        android:onClick="onOptionsItemSelected"
+        app:showAsAction="never"
+        />
+
+    <!--item 13-->
+    <item
+        android:id="@+id/logout"
+        android:title="@string/logout"
+        android:titleCondensed="Log Out"
+        android:onClick="onOptionsItemSelected"
+        app:showAsAction="never"
+        />
+
+    <!--item 14-->
+    <item
+        android:id="@+id/quit"
+        android:title="@string/quit"
+        android:titleCondensed="Quit"
+        android:onClick="onOptionsItemSelected"
+        app:showAsAction="never"
+        />
+
+</menu>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#d5fff3">
+
+    <Button
+        android:id="@+id/exit"
+        android:layout_width="39dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="8dp"
+        android:textColor="@android:color/background_dark"
+        android:layout_marginBottom="8dp"
+        android:text="X" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="#d5fff3"
+                android:orientation="horizontal">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/traineeimg"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="170dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_horizontal"
+                   android:fontFamily="@font/aclonica"
+                    android:text="TextView"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="24sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="#d5fff3"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/price"
+                    android:layout_width="94dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/aclonica"
+                    android:text="@string/gender_header"
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:textSize="18sp"
+                    android:textStyle="bold|italic" />
+
+                <TextView
+                    android:id="@+id/gender"
+                    android:layout_width="103dp"
+                    android:layout_height="33dp"
+                    android:fontFamily="@font/aclonica"
+                    android:text="TextView"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="#d5fff3"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/emaill"
+                    android:layout_width="69dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/aclonica"
+                    android:text="@string/email"
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:textSize="18sp"
+                    android:textStyle="bold|italic" />
+
+                <TextView
+                    android:id="@+id/email"
+                    android:layout_width="152dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@android:color/background_dark"
+                    android:fontFamily="@font/aclonica"
+                    android:text="TextView"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/bemail"
+                    android:layout_width="48dp"
+                    android:layout_height="45dp"
+                    android:drawableLeft="@drawable/ic_email_black_24dp"
+                    android:fontFamily="@font/aclonica" />
+
+            </LinearLayout>
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="#d5fff3"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/phonee"
+                    android:layout_width="84dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/aclonica"
+                    android:text="@string/phone"
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:textSize="18sp"
+                    android:textStyle="bold|italic" />
+
+                <TextView
+                    android:id="@+id/phone"
+                    android:layout_width="154dp"
+                    android:layout_height="26dp"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/aclonica"
+                    android:text="TextView"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="15sp"/>
+
+
+                <Button
+                    android:id="@+id/bphone"
+                    android:layout_width="50dp"
+                    android:layout_height="52dp"
+                    android:layout_gravity="center_horizontal"
+                    android:drawableLeft="@drawable/ic_phone_black_24dp"
+                    android:fontFamily="@font/aclonica" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

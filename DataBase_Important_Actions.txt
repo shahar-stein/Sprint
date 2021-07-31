@@ -1,0 +1,272 @@
+For Android Studio, add the following lines to the project’s Gradle.build file:
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+}
+//-------------------------------------------------------------------------------------------------------------
+And add the following to the app’s Gradle.build file with your desired SDK version plugged in version (is 3.1.0)
+
+compile 'com.microsoft.azure:azure-mobile-android:3.1.0'
+//-------------------------------------------------------------------------------------------------------------
+For Storage Classes add in Gradle.build file
+
+compile 'com.microsoft.azure.android:azure-storage-android:0.6.0@aar'
+//-------------------------------------------------------------------------------------------------------------
+In Manifest
+
+<uses-permission android:name="android.permission.INTERNET" />
+
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+//------------------------------------------------------------------------------------------------------------
+Add the following line to the top of the .java file containing your launcher activity:
+
+import java.io.*;
+
+import com.microsoft.windowsazure.mobileservices.*;
+
+import com.microsoft.windowsazure.mobileservices.MobileServiceClient;
+import com.microsoft.windowsazure.mobileservices.MobileServiceException;
+import com.microsoft.windowsazure.mobileservices.table.MobileServiceTable;
+
+For Storage Service
+
+import com.microsoft.azure.storage.*;
+import com.microsoft.azure.storage.blob.*;
+//------------------------------------------------------------------------------------------------------------
+Inside your activity, add a private variable:
+
+private MobileServiceClient mClient;
+
+MobileServiceTable<ClientsTbl> mMyTable;
+//------------------------------------------------------------------------------------------------------------
+Add the following code to the onCreate method of the activity:
+
+ try
+        {
+          mClient = new MobileServiceClient("http://bronprivateclasses.azurewebsites.net",Login_Activity.this);
+          mMyTable = mClient.getTable(admintbl.class);
+
+        } catch (MalformedURLException e)
+        {
+            Toast.makeText(this,e.getMessage().toString(), Toast.LENGTH_LONG).show();
+        }
+//------------------------------------------------------------------------------------------------------------
+For Each Table You created in Azure ,Create a corresponding class in Android Studio.(Dont forget to add id string field in all classes
+//--------------------------------------------------------------------------------------------------------------------------------------
+Add New Values To The Table-- In Asyntask---
+ @Override
+            protected Void doInBackground(Void... voids)
+            {
+                try
+                {
+                    admintbl admin_user= mMyTable.insert(new_admin).get();
+                }
+                catch (InterruptedException e)
+                {
+                    e.printStackTrace();
+                }
+                catch (ExecutionException e)
+                {
+                    e.printStackTrace();
+                }
+                return null;
+            }
+//----------------------------------------------------------------------
+Search in Table--- Use Asyntask----
+  @Override
+            protected String doInBackground(Void... voids)
+            {
+                try
+                {
+                    List<admintbl> results=mMyTable.where().field("usern").eq(user).execute().get();
+             
+                }
+                catch (InterruptedException e)
+                {
+                    Show_Errror_Message(e.getMessage().toString());
+                }
+                catch (ExecutionException e)
+                {
+                    Show_Errror_Message(e.getMessage().toString());
+                }
+                return null;
+            }
+//-----------------------------------------------------------------------
+Update Table---Use Ayntask
+ @Override
+            protected Boolean doInBackground(Void... voids)
+            {
+                try
+                {
+                    List<admintbl> results = mMyTable.where().field("usern").eq(user).and().field("pass").eq(old_pass).execute().get();
+
+                    if(results.size()!=0)
+                    {
+                        admintbl adm= new admintbl(results.get(0).getUsern(),new_pass,results.get(0).getPhone_numb(),results.get(0).getId());
+
+                        admintbl updatedRow= mMyTable.update(adm).get();
+
+                        General_Variables.Set_Admin_User(updatedRow);
+                    }
+                    else
+                    {
+                        Toast.makeText(Update_Login_Activity.this, "UserName or Password are Incorrect!!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                catch (InterruptedException e)
+                {
+                    e.printStackTrace();
+                }
+                catch (ExecutionException e)
+                {
+                    e.printStackTrace();
+                }
+
+                return null;
+            }
+//-----------------------------------------------------------
+Storage Definitions
+  public static final String storageConnectionString =
+            "DefaultEndpointsProtocol=http;" +
+                    "AccountName=privateclassstorage;" +
+                    "AccountKey=wZK7R8wyKVJ4kg8kDHO1GbEE7kF7uZB2SQxmor8ppIf2tfTWSCCKghc+AFdXJkWzP5ixI61eZ1+sWjB+D0rm8A==";
+//-----------------------------------------------------------
+Save Picture from Phone to Storage
+private void Upload_Pic_To_Azure(final studentstbl newSts)
+    {
+        AsyncTask<Void,Void,Void> task = new AsyncTask<Void, Void, Void>()
+        {
+            @Override
+            protected Void doInBackground(Void... voids)
+            {
+                try {
+                    // Retrieve storage account from connection-string.
+                    CloudStorageAccount storageAccount = CloudStorageAccount.parse(storageConnectionString);
+
+                    // Create the blob client.
+                    CloudBlobClient blobClient = storageAccount.createCloudBlobClient();
+
+                    // Retrieve reference to a previously created container.
+                    CloudBlobContainer container = blobClient.getContainerReference("pics");
+
+                    // Create the container if it does not exist
+                    container.createIfNotExists();
+
+                    String picname=path.substring(path.lastIndexOf("/")+1);
+                    picname=picname.replaceAll("\\s+","");
+
+                    // Create or overwrite the "myimage.jpg" blob with contents from a local file
+                    CloudBlockBlob blob = container.getBlockBlobReference(picname);
+
+                    File source = new File(path);
+
+                    if(source.exists())
+
+                        blob.upload(new FileInputStream(source), source.length());
+
+                   studentstbl current_std= mMyTableStd.insert(newSts).get(); -- add data to a table!!
+                }
+                catch (final Exception e)
+                {
+                    runOnUiThread(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            Toast.makeText(Student_New_Activity.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid)
+            {
+                super.onPostExecute(aVoid);
+            }
+        };
+        task.execute();
+    }
+//-----------------------------------------------------------
+Get Urls Pic from Storage
+    new AsyncTask<Void, Void, Void>()
+        {
+            @Override
+            protected Void doInBackground(Void... voids)
+            {
+                try
+                {
+                    CloudStorageAccount storageAccount = CloudStorageAccount.parse(storageConnectionString);
+
+                    CloudBlobClient blobClient = storageAccount.createCloudBlobClient();
+                    CloudBlobContainer container = blobClient.getContainerReference("Container_Name");
+
+                    for(ListBlobItem blobItem : container.listBlobs())
+                        urls.add(blobItem.getUri().toString());
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+
+                return null;
+            }
+
+        }.execute();
+//-------------------------------------------------------------
+Convert String pic_name_Path to Bitmap--Use Asyntask or Not!!!
+  for (int i = 0; i < L_url.size(); i++)
+                {
+                my_bitmap = null;
+
+                    InputStream in = new java.net.URL(L_url.get(i).toString()).openStream();
+                    my_bitmap = BitmapFactory.decodeStream(in);
+                    myLBitmap.add(my_bitmap);
+                }
+//-------------------------------------------------------------
+Get a picture from Gallery
+btnpic.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Intent it = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(it,RESULT_LOAD_IMG);
+            }
+        });
+
+and
+
+  @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode==RESULT_LOAD_IMG && data!=null)
+        {
+            try {
+                Uri selectedimage = data.getData();
+
+                String[] filePathColumn = {MediaStore.Images.Media.DATA};
+
+                Cursor cursor = getContentResolver().query(selectedimage, filePathColumn, null, null, null);
+
+                cursor.moveToFirst();
+
+                int columnindex = cursor.getColumnIndex(filePathColumn[0]);
+
+                path = cursor.getString(columnindex);
+
+                cursor.close();
+
+                imgStudent.setImageBitmap(BitmapFactory.decodeFile(path));
+            }
+            catch (Exception e)
+            {
+                Toast.makeText(this, e.getMessage().toString(), Toast.LENGTH_LONG).show();
+            }
+        }
+    }
